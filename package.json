@@ -1,0 +1,26 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "Application to create a landing page with information about your engineering team.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasdiaz83/teamProfileGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomasdiaz83/teamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/tomasdiaz83/teamProfileGenerator#readme",
+  "devDependencies": {
+    "jest": "^29.1.2"
+  },
+  "dependencies": {
+    "inquirer": "^9.1.3"
+  }
+}
