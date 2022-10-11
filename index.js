@@ -12,18 +12,22 @@ let team = {
 }
 
 //Prompts user to create a a Manager
-const createManager = () => {
+const createManager = async() => {
     return inquirer
         .prompt(questions.Manager)
         .then(answers => {
             //Adds manager to the members object
             team.Manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-            console.log(team);
         })
 }
 
 //Prompts user to create an employee
-const createEmployee = (team) => {
+const createEmployee = async() => {
+    console.log(`
+    ===========================
+    Adding employee to the team
+    ===========================
+    `);
     return inquirer
     .prompt(questions.Employee)
     .then((answers) => {
@@ -36,17 +40,15 @@ const createEmployee = (team) => {
         }
 
         if (addEmployee) {
-            return createEmployee(team);
+            return createEmployee();
         } else {
-            return team;
+            return;
         }
     })
 }
 
-// //Prompts user to get the team
-// function getTeam () {
-//     return console.log(this.members);
-// }
-
 createManager(team)
-    .then(createEmployee(team))
+    .then(() => {
+        console.log()
+        createEmployee();
+    })
