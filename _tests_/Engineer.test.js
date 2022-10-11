@@ -1,9 +1,6 @@
-const Engineer = require('../lib/Engineer');
+import Engineer from "../lib/Engineer"
 
 describe("Engineer class", () => {
-    it('There should be only one engineer', () => {
-        
-    })
     describe("Engineer properties", () => {
         it('Engineer should have a name', () => {
             // Arrange
