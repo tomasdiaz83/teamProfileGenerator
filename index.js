@@ -1,6 +1,7 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+
 const questions = require('./lib/inquirerQuestions')
 const inquirer = require('inquirer');
 
@@ -11,7 +12,7 @@ let team = {
 }
 
 //Prompts user to create a a Manager
-function createManager(team) {
+const createManager = () => {
     return inquirer
         .prompt(questions.Manager)
         .then(answers => {
@@ -22,16 +23,30 @@ function createManager(team) {
 }
 
 //Prompts user to create an employee
-function createEmployee () {
-    return inquirer.prompt(questions.Employee)
-    .then((data) => {
-        return data;
+const createEmployee = (team) => {
+    return inquirer
+    .prompt(questions.Employee)
+    .then((answers) => {
+        let { role, name, id, email, gitHub, school, addEmployee } = answers;
+        
+        if (role === "Engineer") {
+            team.Engineers.push(new Engineer (name, id, email, gitHub))
+        } else if (role === "Intern") {
+            team.Interns.push(new Intern (name, id, email, school))
+        }
+
+        if (addEmployee) {
+            return createEmployee(team);
+        } else {
+            return team;
+        }
     })
 }
 
-//Prompts user to get the team
-function getTeam () {
-    return console.log(this.members);
-}
+// //Prompts user to get the team
+// function getTeam () {
+//     return console.log(this.members);
+// }
 
 createManager(team)
+    .then(createEmployee(team))
