@@ -4,7 +4,7 @@
   "description": "Application to create a landing page with information about your engineering team.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
