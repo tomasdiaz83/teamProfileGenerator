@@ -1,4 +1,4 @@
-const Intern = require('../lib/Intern');
+import Intern from "../lib/Intern"
 
 describe("Intern class", () => {
     describe("Intern properties", () => {

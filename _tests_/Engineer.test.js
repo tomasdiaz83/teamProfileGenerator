@@ -1,4 +1,4 @@
-const Engineer = require('../lib/Engineer');
+import Engineer from "../lib/Engineer"
 
 describe("Engineer class", () => {
     describe("Engineer properties", () => {

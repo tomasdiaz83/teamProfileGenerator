@@ -4,7 +4,8 @@
   "description": "Application to create a landing page with information about your engineering team.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
