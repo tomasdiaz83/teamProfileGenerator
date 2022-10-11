@@ -1,4 +1,4 @@
-import Employee from "../lib/Employee"
+const Employee = require("../lib/Employee");
 
 describe("Employee class", () => {
     describe("Employee properties", () => {

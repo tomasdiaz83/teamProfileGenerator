@@ -1,4 +1,4 @@
-import Manager from "../lib/Manager"
+const Manager = require("../lib/Manager");
 
 describe("Manager class", () => {
     it('There should be only one manager', () => {
