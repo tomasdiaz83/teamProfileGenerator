@@ -1,3 +1,4 @@
+//Creates individual manager card
 const generateManagerCard = (manager) => {
     return `
             <section class="card">
@@ -12,6 +13,7 @@ const generateManagerCard = (manager) => {
 `
 }
 
+//Creates individual engineer cards
 const generateEngineerCard = (engineer) => {
     return `
             <section class="card">
@@ -26,6 +28,7 @@ const generateEngineerCard = (engineer) => {
 `
 }
 
+//Joins engineer cards into a continuous body of HTML markup
 const generateEngineerHTML = (engineers) => {
     let engineerArray = [];
 
@@ -34,11 +37,12 @@ const generateEngineerHTML = (engineers) => {
         engineerArray.push(engHTML);
     }
 
-    engineerArray.join('');
+    engineerArray = engineerArray.join('');
 
     return engineerArray;
 }
 
+//Creates individual intern cards
 const generateInternCard = (intern) => {
     return `
             <section class="card">
@@ -53,6 +57,7 @@ const generateInternCard = (intern) => {
 `
 }
 
+//Joins engineer cards into a continuous body of HTML markup
 const generateInternHTML = (interns) => {
     let internArray = [];
 
@@ -61,11 +66,12 @@ const generateInternHTML = (interns) => {
         internArray.push(intHTML);
     }
 
-    internArray.join('');
+    internArray = internArray.join('');
 
     return internArray;
 }
 
+//Creates HTML
 const HTMLbody = async(manager, engineers, interns) => {
     return `
 <!DOCTYPE html>
@@ -81,20 +87,26 @@ const HTMLbody = async(manager, engineers, interns) => {
         
         <h1>The Dev Team</h1>
         
+        <h2>Manager</h2>
+
         <section class = "manager">
             ${generateManagerCard(manager)}
         </section>
 
+        <h2>Engineers</h2>
+
         <section class = "engineers">
             ${generateEngineerHTML(engineers)}
         </section>
+
+        <h2>Interns</h2>
 
         <section class = "interns">
             ${generateInternHTML(interns)}
         </section>
 
     </body>
-    
+
 </html>`}
 
 module.exports = HTMLbody;

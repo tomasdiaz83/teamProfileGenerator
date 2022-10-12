@@ -58,11 +58,12 @@ const createEmployee = async() => {
 createManager()
     .then(createEmployee)
     .then(() => {
+        //Creates the HTML
         const teamHTML = HTMLbody(team.Manager, team.Engineers, team.Interns);
-        console.log(teamHTML);
         return teamHTML;
     })
     .then((teamHTML) => {
+        //Writes HTML to file
         fs.writeFile('./dist/devTeam.HTML', teamHTML, err => {
             if (err) {
                 console.error(err);
@@ -70,29 +71,4 @@ createManager()
                 console.log("Dev Team page successfully created!")
             }
         }) 
-    });
-
-// const testHTML = `
-// <section class = "manager">
-//         <section class="card">
-//             <div class="container">
-//                 <p>Name</p>
-//                 <p>Role</p>
-//                 <p>ID:</p>
-//                 <p>Email</p>
-//                 <p>GitHub/School/Office</p>
-//             </div>
-//         </section>
-//     </section>
-// `;
-// const test = (teamHTML) => {
-//     fs.writeFile('./dist/devTeam.HTML', teamHTML, err => {
-//         if (err) {
-//             console.error(err);
-//         } else {
-//             console.log("Dev Team page successfully created!")
-//         }
-//     }) 
-// }
-
-// test(testHTML);
+    })
