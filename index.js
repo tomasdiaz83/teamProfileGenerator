@@ -3,6 +3,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 const questions = require('./lib/inquirerQuestions')
+const HTMLbody = require('./src/HTMLTemplates')
+
+const fs = require('fs');
 const inquirer = require('inquirer');
 
 let team = {
@@ -13,6 +16,11 @@ let team = {
 
 //Prompts user to create a a Manager
 const createManager = async() => {
+    console.log(`
+    ===========================
+    Adding manager to the team
+    ===========================
+    `);
     return inquirer
         .prompt(questions.Manager)
         .then(answers => {
@@ -47,8 +55,44 @@ const createEmployee = async() => {
     })
 }
 
-createManager(team)
+createManager()
+    .then(createEmployee)
     .then(() => {
-        console.log()
-        createEmployee();
+        const teamHTML = HTMLbody(team.Manager, team.Engineers, team.Interns);
+        console.log(teamHTML);
+        return teamHTML;
     })
+    .then((teamHTML) => {
+        fs.writeFile('./dist/devTeam.HTML', teamHTML, err => {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log("Dev Team page successfully created!")
+            }
+        }) 
+    });
+
+// const testHTML = `
+// <section class = "manager">
+//         <section class="card">
+//             <div class="container">
+//                 <p>Name</p>
+//                 <p>Role</p>
+//                 <p>ID:</p>
+//                 <p>Email</p>
+//                 <p>GitHub/School/Office</p>
+//             </div>
+//         </section>
+//     </section>
+// `;
+// const test = (teamHTML) => {
+//     fs.writeFile('./dist/devTeam.HTML', teamHTML, err => {
+//         if (err) {
+//             console.error(err);
+//         } else {
+//             console.log("Dev Team page successfully created!")
+//         }
+//     }) 
+// }
+
+// test(testHTML);
